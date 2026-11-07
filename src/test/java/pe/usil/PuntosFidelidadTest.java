@@ -26,4 +26,17 @@ class PuntosFidelidadTest {
     void casoControlClasicaSinBono() {
         assertEquals(12, PuntosFidelidad.calcular(125.50, Categoria.CLASICA));
     }
+
+    @Test
+    void categoriaOroDuplicaPuntosBase() {
+        // Base: 100 / 10 = 10 puntos -> ORO: 10 * 2 = 20 puntos
+        assertEquals(20, PuntosFidelidad.calcular(100.00, Categoria.ORO));
+    }
+
+    @Test
+    void rechazaCategoriaNula() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            PuntosFidelidad.calcular(100.00, null);
+        });
+    }
 }
