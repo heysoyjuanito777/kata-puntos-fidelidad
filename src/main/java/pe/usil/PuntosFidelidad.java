@@ -10,11 +10,13 @@ public class PuntosFidelidad {
             throw new IllegalArgumentException("La categoría no puede ser nula.");
         }
 
-        int puntos = (int) (monto / 10.0);
+        int puntosBase = (int) (monto / 10.0);
         if (categoria == Categoria.ORO) {
-            puntos *= 2;
+            puntosBase *= 2;
         }
 
-        return puntos;
+        int bono = (monto >= 500.0) ? 50 : 0;
+
+        return puntosBase + bono;
     }
 }
